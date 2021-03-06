@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Round</title>
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="header-logo">Make Round !</a>
+        <p>編集ページです。</p>
+    </div>
+
+    <div class="add-member">
+        <h2>新規追加</h2>
+        <form action="/create" method="POST">
+            <!-- ここから続き。
+                nameとかをいじる。
+                pタグじゃない、インラインの文章を囲むタグを調べる。
+                「性別：」みたいにしたい。
+            -->
+            名前： 
+            <input type="text" name="memberName">
+            <br>
+
+            <!-- idを消したので、func.jsで修正が必要！ -->
+            <!-- valueを数字にしたので、実際にDBに記録するときには数値に変換する！ -->
+            性別：
+            <input type="radio" name="memberGender" value="1"> 男
+            <input type="radio" name="memberGender" value="2" checked> 女
+            <input type="radio" name="memberGender" value="0"> その他
+            <br>
+
+            <!-- idを消したので、func.jsで修正が必要！ -->
+            <!-- valueを数字にしたので、実際にDBに記録するときには数値に変換する！ -->
+            学年： 
+            <select name="memberGrade">
+                <option value="1">1男/1女</option>
+                <option value="2">2男/2女</option>
+                <option value="3">3男/3女</option>
+                <option value="4">4男/4女</option>
+                <option value="5">5男/5女</option>
+                <option value="6">6男/6女</option>
+                <option value="7">7up</option>
+            </select>
+            <br></br>
+            <input type="submit" value="追加する">
+        </form>
+        <p id="output"></p>
+    </div>
+
+    <div class="member-list">
+        <ul class="table-body">
+            <% members.forEach((member) => { %>
+                <li>
+                    <div class="member-data">
+                        <span class="id-column"><%= member.member_id %></span>
+                        <span class="name-column"><%= member.name %></span>
+                        <span class="gender-column"><%= member.gender %></span>
+                        <span class="grade-column"><%= member.grade %></span>
+                    </div>
+
+                    <div class="member-menu">
+                        <form action="/delete/<%=member.member_id%>" method="POST">
+                            <input type="submit" value="削除">
+                        </form>
+                        <a href="/edit/<%=member.member_id%>">編集</a>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+        
+
+    <div>
+        <a href="/select">参加者選択ページへ</a>
+    </div>
+</body>
+</html>

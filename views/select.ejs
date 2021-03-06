@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script>
+    <script>
+        let 
+            participants = [],
+            roundSetData = []
+        ;
+
+    </script>
+    <title>Make Round</title>
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="header-logo">Make Round !</a>
+        <p>選択ページです。</p>
+    </div>
+
+    <div class="member-list">
+        <h3>参加者を選択してください</h3>
+
+        <div class="search-area">
+            <form>
+                <input type="text" id="search-text" placeholder="検索ワードを入力">
+            </form>
+            <div class="search-result">
+                <div class="search-result_hit-num"></div>
+                <div id="search-result_list"></div>
+            </div>
+        </div>
+        
+
+        <ul class="table-body">
+            <% members.forEach((member) => { %>
+                <li id="id_<%=member.member_id%>" class="list_item">
+                    <div class="member-data">
+                        <span class="id-column" id="id-column-<%=member.member_id%>"><%= member.member_id %></span>
+                        <span class="name-column" id="name-column-<%=member.member_id%>"><%= member.name %></span>
+                        <span class="gender-column" id="gender-column-<%=member.member_id%>"><%= member.gender %></span>
+                        <span class="grade-column" id="grade-column-<%=member.member_id%>"><%= member.grade %></span>
+                    </div>
+
+        
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <div>選択中：<span id="check_item"></span></div>
+
+    
+
+    <div class="participant-list">
+        <ul id="participant-table-body">
+            
+        </ul>
+    </div>
+
+    <!-- ラウンド条件入力欄 -->
+    <div id="round-rule">
+        <h3>ラウンドの内訳を入力してください</h3>
+        何面で回しますか？：<input type="number" id="court-num" min="1" max="9">面
+        <br>
+        <div class="round-set" id="round-set-0">
+            <select name="gender-ratio" class="gender-ratio" id="gender-ratio-0">
+                <option value="0">男4女0</option>
+                <option value="1">男3女1</option>
+                <option value="2">男2女2</option>
+                <option value="3">男1女3</option>
+                <option value="4">男0女4</option>
+                <option value="5">条件なし</option>
+            </select>
+            <span>が</span>
+            <input type="number" class="round-num" id="round-num-0" min="1" max="100">
+            <span>ラウンド</span>
+        </div>
+    </div>
+    <input id="addRound-btn" type="button" value="ラウンドを追加" onclick="addRound()">
+
+
+    <!-- ページ移動 -->
+    <div>
+        <a href="/index">メンバーリストへ</a>
+    </div>
+
+    <div id="makeround">
+        <a id="target" href="">ラウンドを組む</a>
+    </div>
+
+    <script src="/js/select.js"></script>
+
+    <script>
+        const makeR_btn = document.getElementById('makeround');
+        makeR_btn.onclick = () => {
+            if (checkData()) {
+                if (judgeShortage()) {
+                    //ローカルストレージにparticipantsを保存
+                    for (let i = 0; i < participants.length; i++) {
+                        sessionStorage.setItem('participant_' + String(i), JSON.stringify(participants[i]));
+                    }
+                    
+                    //まずroundSetDataにラウンドの情報をプッシュする。
+                    addRoundData();
+                    
+                    //次にローカルストレージにroundSetDataを保存
+                    for (let i = 0; i < roundSetData.length; i++) {
+                        sessionStorage.setItem('roundSet_' + String(i), JSON.stringify(roundSetData[i]));
+                    }
+        
+                    //ローカルストレージにコート数を保存
+                    sessionStorage.setItem('courtNum', document.getElementById('court-num').value);
+                                
+                
+                    let target = document.getElementById('target');
+                    target.href = '/result';
+
+                } else {
+                    alert('人数が足りていません');
+                    target.href = '/select';
+                }
+            } else {
+                alert('未入力の情報があります。');
+            }
+
+            
+    
+            
+        }
+
+
+    </script>
+
+</body>
+</html>

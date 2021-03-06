@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Make Round</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="/" class="header-logo">Make Round !</a>
+            <% if (locals.isLoggedIn === true) { %>
+                <li><a href="/logout">ログアウト</a></li>
+            <% } else { %> 
+                <li><a href="/signup">新規登録</a></li>
+                <li><a href="/login">ログイン</a></li>
+            <% } %>
+            <p>ようこそ、<%=locals.userName%>さん</p>
+            <p>トップページです。</p>
+        </div>
+       
+        <div class="main">
+            <div class="description">
+                <h2>これはラウンド作成アプリです。</h2>
+                <p>メンバー（練習参加者）の『名前』・『性別』・『学年』などの属性を入力すると自動でラウンドを組みます。</p>
+            </div>
+
+        </div>
+            
+        <% if (locals.isLoggedIn) { %>
+            <li><a href="/index">メンバーリストへ</a></li>
+            <li><a href="/select">参加者選択をする</a></li>
+            <% } else { %>
+            <p>ユーザー登録がまだの方はまず<a href="/signup">ユーザー登録</a>をしてください。
+                <br>すでにユーザー登録をしている方は<a href="/login">ログイン</a>してください。</p>
+        <% } %>
+            
+
+        
+
+        <!-- <script src="/js/func.js"></script>  -->
+    </body>
+</html>

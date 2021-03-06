@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Make Round</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="/" class="header-logo">Make Round !</a>
+        </div>
+        
+        <div class="container">
+            <p>編集ページです。</p>
+            <a href="/index" class="cancel-button">キャンセル</a>
+
+            <div class="member-form-wrapper">
+                <form action="/update/<%=member.member_id%>" method="POST">
+                    <!-- ここから続き。
+                        nameとかをいじる。
+                        pタグじゃない、インラインの文章を囲むタグを調べる。
+                        「性別：」みたいにしたい。
+                    -->
+                    名前： 
+                    <input type="text" name="memberName" value="<%=member.name%>">
+                    <br>
+        
+                    <!-- idを消したので、func.jsで修正が必要！ -->
+                    <!-- valueを数字にしたので、実際にDBに記録するときには数値に変換する！ -->
+                    性別：
+                    <input type="radio" name="memberGender" value="1"> 男
+                    <input type="radio" name="memberGender" value="2"> 女
+                    <input type="radio" name="memberGender" value="0"> その他
+                    <br>
+        
+                    <!-- idを消したので、func.jsで修正が必要！ -->
+                    <!-- valueを数字にしたので、実際にDBに記録するときには数値に変換する！ -->
+                    学年： 
+                    <select name="memberGrade">
+                        <option value="1">1男/1女</option>
+                        <option value="2">2男/2女</option>
+                        <option value="3">3男/3女</option>
+                        <option value="4">4男/4女</option>
+                        <option value="5">5男/5女</option>
+                        <option value="6">6男/6女</option>
+                        <option value="7">7up</option>
+                    </select>
+                    <br></br>
+
+                    <input type="submit" value="更新する">
+                </form>
+            </div>
+        </div>
+            
+
+        
+
+        <script src="/js/func.js"></script> 
+    </body>
+</html>

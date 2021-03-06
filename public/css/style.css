@@ -1,0 +1,46 @@
+@charset "utf-8";
+.btn {
+    border: 1px solid #c4c3c3;
+    border-radius: 5px;
+    padding: 0 7px;
+    font-size: 12px;
+    background-color: #fff;
+    height: 20px;
+}
+
+.btn:hover {
+    background-color: #2a4bcb;
+    color: #fff;
+}
+
+/* select.ejs */
+.list_item
+{
+    margin : 2px ;
+    padding : 5px 10px 5px 10px ;
+    border-radius : 10px ;
+    text-align : center ;
+    background : #DDDDDD ;
+    /* display : inline-block ; */
+    width: 150px;
+}
+.list_item:active
+{
+    background : #555555 ;
+}
+.checked
+{
+    color : #FFFFFF ;
+    background : #888888 ;
+}
+
+.table-body 
+{
+    width: 300px;
+    height: 150px;
+    overflow: auto;
+}
+
+.table-body .hidden {
+    display: none;
+}

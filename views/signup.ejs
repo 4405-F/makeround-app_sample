@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Round</title>
+</head>
+<body>
+    <div class="sign">
+        <div class="container">
+          <h1><a href="/">Make Round!</a></h1>
+          <div class="panel">
+            <h2>新規登録</h2>
+            <% if (errors.length > 0) { %>
+              <ul class = "errors">
+                <% errors.forEach(error => { %>
+                  <li><%= error %></li>
+                <% }); %>
+              </ul>
+            <% } %>
+            <form action="/signup" method="POST">
+              <p>ユーザー名</p>
+              <input type="text" name="userName">
+              <p>メールアドレス</p>
+              <input type="text" name="email">
+              <p>パスワード</p>
+              <input type="password" name="password">
+              <input type="submit" value="登録する">
+              <a href="/">トップページに戻る</a>
+            </form>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
