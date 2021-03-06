@@ -257,4 +257,12 @@ app.get('/logout', (req, res) => {
   });
 });
 
-app.listen(8080);
+//herokuでデプロイするために書き換えた。
+let port = process.env.PORT;
+if (port === null || port === "") {
+  port = 8080;
+}
+app.listen(port);
+
+//ローカル開発環境の場合は、上だとうまく行かないのでこっちを有効にする。
+// app.listen(8080);
