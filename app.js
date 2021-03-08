@@ -16,10 +16,10 @@ app.use(express.urlencoded({extended: false}));
 
 // データベースと接続
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Ceryonela5',
-  database: 'makeround'
+  host: 'us-cdbr-east-03.cleardb.com',
+  user: 'b1e3d435a6c99d',
+  password: '8b66b61a',
+  database: 'heroku_8fa7973ef1aa9fa'
 });
 
 //セッション管理
