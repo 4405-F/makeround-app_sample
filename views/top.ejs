@@ -8,35 +8,61 @@
     </head>
 
     <body>
-        <div class="header">
-            <a href="/" class="header-logo">Make Round !</a>
-            <% if (locals.isLoggedIn === true) { %>
-                <li><a href="/logout">ログアウト</a></li>
-            <% } else { %> 
-                <li><a href="/signup">新規登録</a></li>
-                <li><a href="/login">ログイン</a></li>
-            <% } %>
-            <p>ようこそ、<%=locals.userName%>さん</p>
-        </div>
-       
-        <div class="main">
-            <div class="description">
-                <h2>これはラウンド作成アプリです。</h2>
-                <p>メンバー（練習参加者）の『名前』・『性別』・『学年』などの属性を入力すると自動でラウンドを組みます。</p>
-            </div>
-
-        </div>
-            
-        <% if (locals.isLoggedIn) { %>
-            <li><a href="/index">メンバーリストへ</a></li>
-            <li><a href="/select">参加者選択をする</a></li>
-            <% } else { %>
-            <p>ユーザー登録がまだの方はまず<a href="/signup">ユーザー登録</a>をしてください。
-                <br>すでにユーザー登録をしている方は<a href="/login">ログイン</a>してください。</p>
-        <% } %>
-            
-
+        <%- include('header'); %>
         
+        <div class="contents">
+            <div class="main">
+                <div class="cool-wrapper">
+                    <div class="container">
+                        <h2>ラウンド自動生成アプリ</h2>
+                        <h1>MakeRound</h1>
+                    </div>
+                </div>
+                <div class="description">
+                    <p id="username-call">
+                        <% if (locals.isLoggedIn) { %>
+                            ようこそ、<%= locals.userName %>さん
+                        <% } else { %>
+                            ようこそ、ゲストさん
+                        <% } %>
+                        </p>
+
+                    <h2>How to Use?</h2>
+            
+                    <div class="description-wrapper">
+                        <ul>
+                            <li>
+                                <h3>1.新規登録/ログイン</h3>
+                                <p>初めてご利用される方はまず新規登録してください。
+                                    <br>既にユーザー登録がお済みの方はログインしてください。
+                                </p>
+                            </li>
+                            <li>
+                                <h3>2.メンバー登録</h3>
+                                <p>メンバーリストでメンバーを登録してください。</p>                                
+                            </li>
+                            <li>
+                                <h3>3.ラウンド参加者選択</h3>
+                                <p>本日の練習参加者をメンバーリストから選択してください</p>
+                            </li>
+                            <li>
+                                <h3>4.ラウンド条件入力</h3>
+                                <p>ラウンドの条件を入力してください。</p>                                
+                            </li>
+                            <li>
+                                <h3>5.ラウンドを組む</h3>
+                                <p>すべて入力ができたら「ラウンドを組む」ボタンを押してください。<br>生成したラウンドが表示されます。</p>                                
+                            </li>
+                        </ul>
+                    
+                    </div>
+                
+                </div>
+    
+            </div>
+        </div>
+            
+        <%- include('footer'); %>
 
         <!-- <script src="/js/func.js"></script>  -->
     </body>
