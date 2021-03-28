@@ -103,7 +103,7 @@ $(() => {
         //定数や変数の定義
         const PARTICIPANT_TABLE_BODY = document.getElementById('participant-table-body');   //ul要素
         let
-            participantList,    //li要素
+            participantList,    //div要素
             participantDiv,     //div要素
             //span要素の中身
             participantIDContent,
@@ -127,29 +127,34 @@ $(() => {
             //テスト
             console.log('participants[' + String(l) + ']：' + participants[l]);
 
-            participantList = document.createElement('li');
+            participantList = document.createElement('div');
             //divタグ
             participantDiv = document.createElement('div');
 
             //spanタグの中身
-            participantIDContent = document.createElement('span');
+            // participantIDContent = document.createElement('span');
             participantNameContent = document.createElement('span');
             participantGenderContent = document.createElement('span');
             participantGradeContent = document.createElement('span');
 
+            //spanタグにclassを設定
+            // participantIDContent.setAttribute('class', 'participant-id-column');
+            participantNameContent.setAttribute('class', 'participant-name-column');
+            participantGenderContent.setAttribute('class', 'participant-gender-column');
+            participantGradeContent.setAttribute('class', 'participant-grade-column');
             //spanタグにidを設定
-            participantIDContent.setAttribute('id', 'participant-id-column-'+String(participants[l].id));
+            // participantIDContent.setAttribute('id', 'participant-id-column-'+String(participants[l].id));
             participantNameContent.setAttribute('id', 'participant-name-column-'+String(participants[l].id));
             participantGenderContent.setAttribute('id', 'participant-gender-column-'+String(participants[l].id));
             participantGradeContent.setAttribute('id', 'participant-grade-column-'+String(participants[l].id));
             //spantタグに内容を追加
-            participantIDContent.textContent = String(participants[l].id);
+            // participantIDContent.textContent = String(participants[l].id);
             participantNameContent.textContent = participants[l].name;
             participantGenderContent.textContent = String(participants[l].gender);
             participantGradeContent.textContent = String(participants[l].grade);
             
             //div要素にspan要素を追加
-            participantDiv.appendChild(participantIDContent);
+            // participantDiv.appendChild(participantIDContent);
             participantDiv.appendChild(participantNameContent);
             participantDiv.appendChild(participantGenderContent);
             participantDiv.appendChild(participantGradeContent);

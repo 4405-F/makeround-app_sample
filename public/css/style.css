@@ -397,6 +397,7 @@ body {
     }
 
     .settings-wrapper .list_item {
+        height: 30px;
         width: 150px;
     }
 
