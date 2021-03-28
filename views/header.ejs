@@ -1,0 +1,16 @@
+<div class="header">
+    <div class="header-container">
+        <div id="logo-wrapper">
+            <span><a href="/" onclick="sessionStorage.clear();">MakeRound</a></span>
+        </div>
+        <div class="log-management-wrapper">
+            <% if (locals.isLoggedIn) { %>
+                <div id="logout-button"><a href="/logout">ログアウト</a></div>
+            <% } else { %>
+                <div id="login-button"><a href="/login">ログイン</a></div>
+                <div class="header-button-wrapper"><a href="/signup"><div id="signup-button"><span>新規登録</span></div></a></div>
+            <% } %>
+        </div>
+    </div>
+    
+</div>
