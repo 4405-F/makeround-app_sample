@@ -6,7 +6,6 @@ const express = require('express');
 const mysql = require('mysql');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
-const { reset } = require('nodemon');
 
 const app = express();
 
