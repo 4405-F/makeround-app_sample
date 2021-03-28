@@ -5,20 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make Round</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div class="panel">
-            <h2>ログイン</h2>
-            <form action="/login" method="POST">
-                <p>メールアドレス</p>
-                <input type="text" name="email">
-                <p>パスワード</p>
-                <input type="password" name="password">
-
-                <input type="submit" value="ログイン">
-            </form>
+    <%- include('header'); %>
+    <div class="login-contents">
+        <div class="login">
+            <div class="login-panel">
+                <h3>ログイン</h3>
+                <form action="/login" method="POST">
+                    <input type="text" name="email" placeholder="メールアドレス">
+                    <input type="password" name="password" placeholder="パスワード">
+                    <div><input class="submit-button" type="submit" value="ログイン"></div>
+                </form>
+            </div>
         </div>
-    </header>
+    </div>
+    
+    <%- include('footer'); %>
 </body>
 </html>

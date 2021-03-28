@@ -15,81 +15,81 @@
     <title>Make Round</title>
 </head>
 <body>
-    <div class="header">
-        <a href="/" class="header-logo">Make Round !</a>
-        <p>選択ページです。</p>
-    </div>
-
-    <div class="member-list">
-        <h3>参加者を選択してください</h3>
-
-        <div class="search-area">
-            <form>
-                <input type="text" id="search-text" placeholder="検索ワードを入力">
-            </form>
-            <div class="search-result">
-                <div class="search-result_hit-num"></div>
-                <div id="search-result_list"></div>
-            </div>
-        </div>
-        
-
-        <ul class="table-body">
-            <% members.forEach((member) => { %>
-                <li id="id_<%=member.member_id%>" class="list_item">
-                    <div class="member-data">
-                        <span class="id-column" id="id-column-<%=member.member_id%>"><%= member.member_id %></span>
-                        <span class="name-column" id="name-column-<%=member.member_id%>"><%= member.name %></span>
-                        <span class="gender-column" id="gender-column-<%=member.member_id%>"><%= member.gender %></span>
-                        <span class="grade-column" id="grade-column-<%=member.member_id%>"><%= member.grade %></span>
+    <%- include('header'); %>
+    <div class="select-contents">
+        <div class="settings-wrapper">
+            <div class="member-list">
+                <h3>参加者を選択してください</h3>
+                <p>メンバーリスト</p>
+                <div class="search-area">
+                    <form>
+                        <input type="text" id="search-text" placeholder="検索ワードを入力">
+                    </form>
+                    <div class="search-result">
+                        <div class="search-result_hit-num"></div>
+                        <div id="search-result_list"></div>
                     </div>
-
+                </div>
+                
         
-                </li>
-            <% }) %>
-        </ul>
-    </div>
-
-    <div>選択中：<span id="check_item"></span></div>
-
-    
-
-    <div class="participant-list">
-        <ul id="participant-table-body">
+                <div class="table-body">
+                    <% members.forEach((member) => { %>
+                        <div id="id_<%=member.member_id%>" class="list_item">
+                            <div class="member-data">
+                                <span hidden class="id-column" id="id-column-<%=member.member_id%>"><%= member.member_id %></span>
+                                <span class="name-column" id="name-column-<%=member.member_id%>"><%= member.name %></span>
+                                <span class="gender-column" id="gender-column-<%=member.member_id%>"><%= member.gender %></span>
+                                <span class="grade-column" id="grade-column-<%=member.member_id%>"><%= member.grade %></span>
+                            </div>
+        
+                
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        
+            <!-- <div>選択中：<span id="check_item"></span></div> -->
+        
             
-        </ul>
-    </div>
-
-    <!-- ラウンド条件入力欄 -->
-    <div id="round-rule">
-        <h3>ラウンドの内訳を入力してください</h3>
-        何面で回しますか？：<input type="number" id="court-num" min="1" max="9">面
-        <br>
-        <div class="round-set" id="round-set-0">
-            <select name="gender-ratio" class="gender-ratio" id="gender-ratio-0">
-                <option value="0">男4女0</option>
-                <option value="1">男3女1</option>
-                <option value="2">男2女2</option>
-                <option value="3">男1女3</option>
-                <option value="4">男0女4</option>
-                <option value="5">条件なし</option>
-            </select>
-            <span>が</span>
-            <input type="number" class="round-num" id="round-num-0" min="1" max="100">
-            <span>ラウンド</span>
+        
+            <div class="participant-list">
+                <p>選択中</p>
+                <div class="participants-wrapper" id="participant-table-body">
+                    
+                </div>
+            </div>
+        
+            <!-- ラウンド条件入力欄 -->
+            <div id="round-rule">
+                <h3>ラウンドの内訳を入力してください</h3>
+                何面で回しますか？：<input type="number" id="court-num" min="1" max="9">面
+                <br>
+                <div id="round-set-wrapper">
+                    <div class="round-set" id="round-set-0">
+                        <select name="gender-ratio" class="gender-ratio" id="gender-ratio-0">
+                            <option value="0">男4女0</option>
+                            <option value="1">男3女1</option>
+                            <option value="2">男2女2</option>
+                            <option value="3">男1女3</option>
+                            <option value="4">男0女4</option>
+                            <option value="5">条件なし</option>
+                        </select>
+                        <span>が</span>
+                        <input type="number" class="round-num" id="round-num-0" min="1" max="100">
+                        <span>ラウンド</span>
+                    </div>
+                </div>
+            </div>
+            <input id="addRound-btn" type="button" value="ラウンドを追加" onclick="addRound()">
+        
+        
+            <!-- ページ移動 -->
+            <div id="makeround-btn-wrapper"><a id="target" href=""><div id="makeround"><span>ラウンドを組む</span></div></a></div>
         </div>
-    </div>
-    <input id="addRound-btn" type="button" value="ラウンドを追加" onclick="addRound()">
 
-
-    <!-- ページ移動 -->
-    <div>
-        <a href="/index">メンバーリストへ</a>
     </div>
 
-    <div id="makeround">
-        <a id="target" href="">ラウンドを組む</a>
-    </div>
+    <%- include('footer'); %>
 
     <script src="/js/select.js"></script>
 
