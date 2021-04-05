@@ -15,17 +15,18 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 
 // データベースと接続
+//　それぞれで設定
 const connection = mysql.createConnection({
-  host: 'us-cdbr-east-03.cleardb.com',
-  user: 'b1e3d435a6c99d',
-  password: '8b66b61a',
-  database: 'heroku_8fa7973ef1aa9fa'
+  host: '',
+  user: '',
+  password: '',
+  database: ''
 });
 
 //セッション管理
 app.use(
   session({
-    secret: 'my_secret_key',
+    secret: '',
     resave: false,
     saveUninitialized: false,
   })
